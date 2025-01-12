@@ -11,9 +11,9 @@ import { ms, type StringValue } from './shared/utils/ms.util'
 import { parseBoolean } from './shared/utils/parse-boolean.util'
 
 async function bootstrap() {
-  const app = await NestFactory.create(CoreModule);
+	const app = await NestFactory.create(CoreModule)
 
-  const config = app.get(ConfigService)
+	const config = app.get(ConfigService)
 	const redis = app.get(RedisService)
 
 	app.use(cookieParser(config.getOrThrow<string>('COOKIES_SECRET')))
@@ -39,7 +39,7 @@ async function bootstrap() {
 				secure: parseBoolean(
 					config.getOrThrow<string>('SESSION_SECURE')
 				),
-				sameSite: 'lax'
+				sameSite: 'none'
 			},
 			store: new RedisStore({
 				client: redis,
@@ -56,4 +56,4 @@ async function bootstrap() {
 
 	await app.listen(config.getOrThrow<number>('LOCAL_APP_PORT'))
 }
-bootstrap();
+bootstrap()
