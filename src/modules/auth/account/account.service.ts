@@ -5,7 +5,7 @@ import { PrismaService } from '@/src/core/prisma/prisma.service'
 
 import { VerificationService } from '../verification/verification.service'
 
-import { CreateUserInput } from './inputs/create-ser.input'
+import { CreateUserInput } from './inputs/create-user.input'
 
 @Injectable()
 export class AccountService {

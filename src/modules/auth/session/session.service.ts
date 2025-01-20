@@ -12,7 +12,7 @@ import { TOTP } from 'otpauth'
 
 import { PrismaService } from '@/src/core/prisma/prisma.service'
 import { RedisService } from '@/src/core/redis/redis.service'
-import { getSessionMetadata } from '@/src/shared/utils/session.metadata.util'
+import { getSessionMetadata } from '@/src/shared/utils/session-metadata.util'
 import { destroySession, saveSession } from '@/src/shared/utils/session.utils'
 
 import { VerificationService } from '../verification/verification.service'
@@ -86,33 +86,33 @@ export class SessionService {
 			}
 		})
 
-		if (!user) {
-			throw new NotFoundException('User not found')
+		if (!user || user.isDeactivated) {
+			throw new NotFoundException('Пользователь не найден')
 		}
 
 		const isValidPassword = await verify(user.password, password)
 
 		if (!isValidPassword) {
-			throw new UnauthorizedException('Invalid password')
+			throw new UnauthorizedException('Неверный пароль')
 		}
 
 		if (!user.isEmailVerified) {
 			await this.verificationService.sendVerificationToken(user)
 
 			throw new BadRequestException(
-				'The account is not verified! Please check your email for confirmation'
+				'Аккаунт не верифицирован. Пожалуйста, проверьте свою почту для подтверждения'
 			)
 		}
 
 		if (user.isTotpEnabled) {
 			if (!pin) {
 				return {
-					message: 'Code required to complete authorization'
+					message: 'Необходим код для завершения авторизации'
 				}
 			}
 
 			const totp = new TOTP({
-				issuer: 'StreamFlow',
+				issuer: 'TeaStream',
 				label: `${user.email}`,
 				algorithm: 'SHA1',
 				digits: 6,
@@ -122,13 +122,15 @@ export class SessionService {
 			const delta = totp.validate({ token: pin })
 
 			if (delta === null) {
-				throw new BadRequestException('Incorrect pin')
+				throw new BadRequestException('Неверный код')
 			}
 		}
 
 		const metadata = getSessionMetadata(req, userAgent)
 
-		return saveSession(req, user, metadata)
+		//return saveSession(req, user, metadata)
+		saveSession(req, user, metadata)
+		return { user }
 	}
 
 	public async logout(req: Request) {
