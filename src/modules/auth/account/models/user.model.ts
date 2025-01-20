@@ -36,4 +36,10 @@ export class UserModel implements User {
 
 	@Field(() => Boolean)
 	public isVerified: boolean
+
+	@Field(() => Boolean)
+	isTotpEnabled: boolean
+
+	@Field(() => String, { nullable: true })
+	totpSecret: string
 }

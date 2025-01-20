@@ -8,6 +8,7 @@ import {
 import { ConfigService } from '@nestjs/config'
 import { verify } from 'argon2'
 import type { Request } from 'express'
+import { TOTP } from 'otpauth'
 
 import { PrismaService } from '@/src/core/prisma/prisma.service'
 import { RedisService } from '@/src/core/redis/redis.service'
@@ -74,7 +75,7 @@ export class SessionService {
 	}
 
 	public async login(req: Request, input: LoginInput, userAgent: string) {
-		const { login, password } = input
+		const { login, password, pin } = input
 
 		const user = await this.prismaService.user.findFirst({
 			where: {
@@ -101,6 +102,28 @@ export class SessionService {
 			throw new BadRequestException(
 				'The account is not verified! Please check your email for confirmation'
 			)
+		}
+
+		if (user.isTotpEnabled) {
+			if (!pin) {
+				return {
+					message: 'Code required to complete authorization'
+				}
+			}
+
+			const totp = new TOTP({
+				issuer: 'StreamFlow',
+				label: `${user.email}`,
+				algorithm: 'SHA1',
+				digits: 6,
+				secret: user.totpSecret
+			})
+
+			const delta = totp.validate({ token: pin })
+
+			if (delta === null) {
+				throw new BadRequestException('Incorrect pin')
+			}
 		}
 
 		const metadata = getSessionMetadata(req, userAgent)
