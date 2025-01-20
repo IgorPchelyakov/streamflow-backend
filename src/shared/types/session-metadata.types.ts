@@ -1,8 +1,8 @@
 export interface LocationInfo {
 	country: string
 	city: string
-	latitude: number
-	logitude: number
+	latidute: number
+	longitude: number
 }
 
 export interface DeviceInfo {

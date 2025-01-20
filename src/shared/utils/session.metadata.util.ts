@@ -29,8 +29,8 @@ export function getSessionMetadata(
 		location: {
 			country: countries.getName(location.country, 'en') || 'Unknown',
 			city: location.city || 'Unknown',
-			latitude: location.ll[0] || 0,
-			logitude: location.ll[1] || 0
+			latidute: location.ll[0] || 0,
+			longitude: location.ll[1] || 0
 		},
 		device: {
 			browser: device.client.name,

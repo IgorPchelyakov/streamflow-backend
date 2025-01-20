@@ -5,7 +5,10 @@ import { GraphQLModule } from '@nestjs/graphql'
 import { IS_DEV_ENV } from 'src/shared/utils/is-dev.util'
 
 import { AccountModule } from '../modules/auth/account/account.module'
+import { PasswordRecoveryModule } from '../modules/auth/password-recovery/password-recovery.module'
 import { SessionModule } from '../modules/auth/session/session.module'
+import { VerificationModule } from '../modules/auth/verification/verification.module'
+import { MailModule } from '../modules/libs/mail/mail.module'
 
 import { getGraphqlConfig } from './config/graphql.config'
 import { PrismaModule } from './prisma/prisma.module'
@@ -25,8 +28,11 @@ import { RedisModule } from './redis/redis.module'
 		}),
 		PrismaModule,
 		RedisModule,
+		MailModule,
 		AccountModule,
-		SessionModule
+		SessionModule,
+		VerificationModule,
+		PasswordRecoveryModule
 	]
 })
 export class CoreModule {}
