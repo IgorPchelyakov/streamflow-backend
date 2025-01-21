@@ -17,14 +17,17 @@ import { CreateUserInput } from './inputs/create-user.input'
 @Injectable()
 export class AccountService {
 	public constructor(
-		private readonly prismService: PrismaService,
+		private readonly prismaService: PrismaService,
 		private readonly verificationService: VerificationService
 	) {}
 
 	public async me(id: string) {
-		const user = await this.prismService.user.findUnique({
+		const user = await this.prismaService.user.findUnique({
 			where: {
 				id
+			},
+			include: {
+				socialLinks: true
 			}
 		})
 
@@ -34,7 +37,7 @@ export class AccountService {
 	public async create(input: CreateUserInput) {
 		const { username, email, password } = input
 
-		const isUsernameExists = await this.prismService.user.findUnique({
+		const isUsernameExists = await this.prismaService.user.findUnique({
 			where: {
 				username
 			}
@@ -44,7 +47,7 @@ export class AccountService {
 			throw new ConflictException('Username already exists')
 		}
 
-		const isEmailExists = await this.prismService.user.findUnique({
+		const isEmailExists = await this.prismaService.user.findUnique({
 			where: {
 				email
 			}
@@ -54,7 +57,7 @@ export class AccountService {
 			throw new ConflictException('Email already exists')
 		}
 
-		const user = await this.prismService.user.create({
+		const user = await this.prismaService.user.create({
 			data: {
 				username,
 				email,
@@ -71,7 +74,7 @@ export class AccountService {
 	public async changeEmail(user: User, input: ChangeEmailInput) {
 		const { email } = input
 
-		await this.prismService.user.update({
+		await this.prismaService.user.update({
 			where: {
 				id: user.id
 			},
@@ -92,7 +95,7 @@ export class AccountService {
 			throw new UnauthorizedException('Invalid old password')
 		}
 
-		await this.prismService.user.update({
+		await this.prismaService.user.update({
 			where: {
 				id: user.id
 			},

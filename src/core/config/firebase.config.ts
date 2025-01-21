@@ -3,7 +3,6 @@ import * as admin from 'firebase-admin'
 import { initializeApp } from 'firebase/app'
 import { readFileSync } from 'fs'
 
-// import serviceAccount from './streamflow-fb-conf.json'
 export interface FirebaseConfig {
 	client: any
 	admin: admin.app.App

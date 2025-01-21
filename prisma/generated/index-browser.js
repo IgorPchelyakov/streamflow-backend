@@ -140,9 +140,9 @@ exports.Prisma.SocialLinkScalarFieldEnum = {
   title: 'title',
   url: 'url',
   position: 'position',
+  userId: 'userId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  userId: 'userId'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.TokenScalarFieldEnum = {

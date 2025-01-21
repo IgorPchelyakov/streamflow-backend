@@ -1067,12 +1067,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     token: number
-    socialLikns: number
+    socialLinks: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     token?: boolean | UserCountOutputTypeCountTokenArgs
-    socialLikns?: boolean | UserCountOutputTypeCountSocialLiknsArgs
+    socialLinks?: boolean | UserCountOutputTypeCountSocialLinksArgs
   }
 
   // Custom InputTypes
@@ -1096,7 +1096,7 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSocialLiknsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountSocialLinksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SocialLinkWhereInput
   }
 
@@ -1350,7 +1350,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     token?: boolean | User$tokenArgs<ExtArgs>
-    socialLikns?: boolean | User$socialLiknsArgs<ExtArgs>
+    socialLinks?: boolean | User$socialLinksArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1411,7 +1411,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "username" | "displayName" | "avatar" | "bio" | "isVerified" | "isEmailVerified" | "isTotpEnabled" | "totpSecret" | "isDeactivated" | "deactivatedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     token?: boolean | User$tokenArgs<ExtArgs>
-    socialLikns?: boolean | User$socialLiknsArgs<ExtArgs>
+    socialLinks?: boolean | User$socialLinksArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1421,7 +1421,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       token: Prisma.$TokenPayload<ExtArgs>[]
-      socialLikns: Prisma.$SocialLinkPayload<ExtArgs>[]
+      socialLinks: Prisma.$SocialLinkPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1834,7 +1834,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     token<T extends User$tokenArgs<ExtArgs> = {}>(args?: Subset<T, User$tokenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
-    socialLikns<T extends User$socialLiknsArgs<ExtArgs> = {}>(args?: Subset<T, User$socialLiknsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    socialLinks<T extends User$socialLinksArgs<ExtArgs> = {}>(args?: Subset<T, User$socialLinksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2279,9 +2279,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.socialLikns
+   * User.socialLinks
    */
-  export type User$socialLiknsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$socialLinksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the SocialLink
      */
@@ -2346,9 +2346,9 @@ export namespace Prisma {
     title: string | null
     url: string | null
     position: number | null
+    userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    userId: string | null
   }
 
   export type SocialLinkMaxAggregateOutputType = {
@@ -2356,9 +2356,9 @@ export namespace Prisma {
     title: string | null
     url: string | null
     position: number | null
+    userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    userId: string | null
   }
 
   export type SocialLinkCountAggregateOutputType = {
@@ -2366,9 +2366,9 @@ export namespace Prisma {
     title: number
     url: number
     position: number
+    userId: number
     createdAt: number
     updatedAt: number
-    userId: number
     _all: number
   }
 
@@ -2386,9 +2386,9 @@ export namespace Prisma {
     title?: true
     url?: true
     position?: true
+    userId?: true
     createdAt?: true
     updatedAt?: true
-    userId?: true
   }
 
   export type SocialLinkMaxAggregateInputType = {
@@ -2396,9 +2396,9 @@ export namespace Prisma {
     title?: true
     url?: true
     position?: true
+    userId?: true
     createdAt?: true
     updatedAt?: true
-    userId?: true
   }
 
   export type SocialLinkCountAggregateInputType = {
@@ -2406,9 +2406,9 @@ export namespace Prisma {
     title?: true
     url?: true
     position?: true
+    userId?: true
     createdAt?: true
     updatedAt?: true
-    userId?: true
     _all?: true
   }
 
@@ -2503,9 +2503,9 @@ export namespace Prisma {
     title: string
     url: string
     position: number
+    userId: string | null
     createdAt: Date
     updatedAt: Date
-    userId: string | null
     _count: SocialLinkCountAggregateOutputType | null
     _avg: SocialLinkAvgAggregateOutputType | null
     _sum: SocialLinkSumAggregateOutputType | null
@@ -2532,9 +2532,9 @@ export namespace Prisma {
     title?: boolean
     url?: boolean
     position?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    userId?: boolean
     user?: boolean | SocialLink$userArgs<ExtArgs>
   }, ExtArgs["result"]["socialLink"]>
 
@@ -2543,9 +2543,9 @@ export namespace Prisma {
     title?: boolean
     url?: boolean
     position?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    userId?: boolean
     user?: boolean | SocialLink$userArgs<ExtArgs>
   }, ExtArgs["result"]["socialLink"]>
 
@@ -2554,9 +2554,9 @@ export namespace Prisma {
     title?: boolean
     url?: boolean
     position?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    userId?: boolean
     user?: boolean | SocialLink$userArgs<ExtArgs>
   }, ExtArgs["result"]["socialLink"]>
 
@@ -2565,12 +2565,12 @@ export namespace Prisma {
     title?: boolean
     url?: boolean
     position?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    userId?: boolean
   }
 
-  export type SocialLinkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "url" | "position" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["socialLink"]>
+  export type SocialLinkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "url" | "position" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["socialLink"]>
   export type SocialLinkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | SocialLink$userArgs<ExtArgs>
   }
@@ -2591,9 +2591,9 @@ export namespace Prisma {
       title: string
       url: string
       position: number
+      userId: string | null
       createdAt: Date
       updatedAt: Date
-      userId: string | null
     }, ExtArgs["result"]["socialLink"]>
     composites: {}
   }
@@ -3022,9 +3022,9 @@ export namespace Prisma {
     readonly title: FieldRef<"SocialLink", 'String'>
     readonly url: FieldRef<"SocialLink", 'String'>
     readonly position: FieldRef<"SocialLink", 'Int'>
+    readonly userId: FieldRef<"SocialLink", 'String'>
     readonly createdAt: FieldRef<"SocialLink", 'DateTime'>
     readonly updatedAt: FieldRef<"SocialLink", 'DateTime'>
-    readonly userId: FieldRef<"SocialLink", 'String'>
   }
     
 
@@ -4577,9 +4577,9 @@ export namespace Prisma {
     title: 'title',
     url: 'url',
     position: 'position',
+    userId: 'userId',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    userId: 'userId'
+    updatedAt: 'updatedAt'
   };
 
   export type SocialLinkScalarFieldEnum = (typeof SocialLinkScalarFieldEnum)[keyof typeof SocialLinkScalarFieldEnum]
@@ -4727,7 +4727,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     token?: TokenListRelationFilter
-    socialLikns?: SocialLinkListRelationFilter
+    socialLinks?: SocialLinkListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -4747,7 +4747,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     token?: TokenOrderByRelationAggregateInput
-    socialLikns?: SocialLinkOrderByRelationAggregateInput
+    socialLinks?: SocialLinkOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4770,7 +4770,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     token?: TokenListRelationFilter
-    socialLikns?: SocialLinkListRelationFilter
+    socialLinks?: SocialLinkListRelationFilter
   }, "id" | "email" | "username">
 
   export type UserOrderByWithAggregationInput = {
@@ -4823,9 +4823,9 @@ export namespace Prisma {
     title?: StringFilter<"SocialLink"> | string
     url?: StringFilter<"SocialLink"> | string
     position?: IntFilter<"SocialLink"> | number
+    userId?: StringNullableFilter<"SocialLink"> | string | null
     createdAt?: DateTimeFilter<"SocialLink"> | Date | string
     updatedAt?: DateTimeFilter<"SocialLink"> | Date | string
-    userId?: StringNullableFilter<"SocialLink"> | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
@@ -4834,9 +4834,9 @@ export namespace Prisma {
     title?: SortOrder
     url?: SortOrder
     position?: SortOrder
+    userId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userId?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -4848,9 +4848,9 @@ export namespace Prisma {
     title?: StringFilter<"SocialLink"> | string
     url?: StringFilter<"SocialLink"> | string
     position?: IntFilter<"SocialLink"> | number
+    userId?: StringNullableFilter<"SocialLink"> | string | null
     createdAt?: DateTimeFilter<"SocialLink"> | Date | string
     updatedAt?: DateTimeFilter<"SocialLink"> | Date | string
-    userId?: StringNullableFilter<"SocialLink"> | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
 
@@ -4859,9 +4859,9 @@ export namespace Prisma {
     title?: SortOrder
     url?: SortOrder
     position?: SortOrder
+    userId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userId?: SortOrderInput | SortOrder
     _count?: SocialLinkCountOrderByAggregateInput
     _avg?: SocialLinkAvgOrderByAggregateInput
     _max?: SocialLinkMaxOrderByAggregateInput
@@ -4877,9 +4877,9 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"SocialLink"> | string
     url?: StringWithAggregatesFilter<"SocialLink"> | string
     position?: IntWithAggregatesFilter<"SocialLink"> | number
+    userId?: StringNullableWithAggregatesFilter<"SocialLink"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"SocialLink"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"SocialLink"> | Date | string
-    userId?: StringNullableWithAggregatesFilter<"SocialLink"> | string | null
   }
 
   export type TokenWhereInput = {
@@ -4964,7 +4964,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     token?: TokenCreateNestedManyWithoutUserInput
-    socialLikns?: SocialLinkCreateNestedManyWithoutUserInput
+    socialLinks?: SocialLinkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -4984,7 +4984,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     token?: TokenUncheckedCreateNestedManyWithoutUserInput
-    socialLikns?: SocialLinkUncheckedCreateNestedManyWithoutUserInput
+    socialLinks?: SocialLinkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -5004,7 +5004,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     token?: TokenUpdateManyWithoutUserNestedInput
-    socialLikns?: SocialLinkUpdateManyWithoutUserNestedInput
+    socialLinks?: SocialLinkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -5024,7 +5024,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     token?: TokenUncheckedUpdateManyWithoutUserNestedInput
-    socialLikns?: SocialLinkUncheckedUpdateManyWithoutUserNestedInput
+    socialLinks?: SocialLinkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -5088,7 +5088,7 @@ export namespace Prisma {
     position: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    user?: UserCreateNestedOneWithoutSocialLiknsInput
+    user?: UserCreateNestedOneWithoutSocialLinksInput
   }
 
   export type SocialLinkUncheckedCreateInput = {
@@ -5096,9 +5096,9 @@ export namespace Prisma {
     title: string
     url: string
     position: number
+    userId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userId?: string | null
   }
 
   export type SocialLinkUpdateInput = {
@@ -5108,7 +5108,7 @@ export namespace Prisma {
     position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneWithoutSocialLiknsNestedInput
+    user?: UserUpdateOneWithoutSocialLinksNestedInput
   }
 
   export type SocialLinkUncheckedUpdateInput = {
@@ -5116,9 +5116,9 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     position?: IntFieldUpdateOperationsInput | number
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SocialLinkCreateManyInput = {
@@ -5126,9 +5126,9 @@ export namespace Prisma {
     title: string
     url: string
     position: number
+    userId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userId?: string | null
   }
 
   export type SocialLinkUpdateManyMutationInput = {
@@ -5145,9 +5145,9 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     position?: IntFieldUpdateOperationsInput | number
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TokenCreateInput = {
@@ -5448,9 +5448,9 @@ export namespace Prisma {
     title?: SortOrder
     url?: SortOrder
     position?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userId?: SortOrder
   }
 
   export type SocialLinkAvgOrderByAggregateInput = {
@@ -5462,9 +5462,9 @@ export namespace Prisma {
     title?: SortOrder
     url?: SortOrder
     position?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userId?: SortOrder
   }
 
   export type SocialLinkMinOrderByAggregateInput = {
@@ -5472,9 +5472,9 @@ export namespace Prisma {
     title?: SortOrder
     url?: SortOrder
     position?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userId?: SortOrder
   }
 
   export type SocialLinkSumOrderByAggregateInput = {
@@ -5648,9 +5648,9 @@ export namespace Prisma {
     deleteMany?: SocialLinkScalarWhereInput | SocialLinkScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutSocialLiknsInput = {
-    create?: XOR<UserCreateWithoutSocialLiknsInput, UserUncheckedCreateWithoutSocialLiknsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSocialLiknsInput
+  export type UserCreateNestedOneWithoutSocialLinksInput = {
+    create?: XOR<UserCreateWithoutSocialLinksInput, UserUncheckedCreateWithoutSocialLinksInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSocialLinksInput
     connect?: UserWhereUniqueInput
   }
 
@@ -5662,14 +5662,14 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type UserUpdateOneWithoutSocialLiknsNestedInput = {
-    create?: XOR<UserCreateWithoutSocialLiknsInput, UserUncheckedCreateWithoutSocialLiknsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSocialLiknsInput
-    upsert?: UserUpsertWithoutSocialLiknsInput
+  export type UserUpdateOneWithoutSocialLinksNestedInput = {
+    create?: XOR<UserCreateWithoutSocialLinksInput, UserUncheckedCreateWithoutSocialLinksInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSocialLinksInput
+    upsert?: UserUpsertWithoutSocialLinksInput
     disconnect?: UserWhereInput | boolean
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSocialLiknsInput, UserUpdateWithoutSocialLiknsInput>, UserUncheckedUpdateWithoutSocialLiknsInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSocialLinksInput, UserUpdateWithoutSocialLinksInput>, UserUncheckedUpdateWithoutSocialLinksInput>
   }
 
   export type UserCreateNestedOneWithoutTokenInput = {
@@ -5992,12 +5992,12 @@ export namespace Prisma {
     title?: StringFilter<"SocialLink"> | string
     url?: StringFilter<"SocialLink"> | string
     position?: IntFilter<"SocialLink"> | number
+    userId?: StringNullableFilter<"SocialLink"> | string | null
     createdAt?: DateTimeFilter<"SocialLink"> | Date | string
     updatedAt?: DateTimeFilter<"SocialLink"> | Date | string
-    userId?: StringNullableFilter<"SocialLink"> | string | null
   }
 
-  export type UserCreateWithoutSocialLiknsInput = {
+  export type UserCreateWithoutSocialLinksInput = {
     id?: string
     email: string
     password: string
@@ -6016,7 +6016,7 @@ export namespace Prisma {
     token?: TokenCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutSocialLiknsInput = {
+  export type UserUncheckedCreateWithoutSocialLinksInput = {
     id?: string
     email: string
     password: string
@@ -6035,23 +6035,23 @@ export namespace Prisma {
     token?: TokenUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutSocialLiknsInput = {
+  export type UserCreateOrConnectWithoutSocialLinksInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSocialLiknsInput, UserUncheckedCreateWithoutSocialLiknsInput>
+    create: XOR<UserCreateWithoutSocialLinksInput, UserUncheckedCreateWithoutSocialLinksInput>
   }
 
-  export type UserUpsertWithoutSocialLiknsInput = {
-    update: XOR<UserUpdateWithoutSocialLiknsInput, UserUncheckedUpdateWithoutSocialLiknsInput>
-    create: XOR<UserCreateWithoutSocialLiknsInput, UserUncheckedCreateWithoutSocialLiknsInput>
+  export type UserUpsertWithoutSocialLinksInput = {
+    update: XOR<UserUpdateWithoutSocialLinksInput, UserUncheckedUpdateWithoutSocialLinksInput>
+    create: XOR<UserCreateWithoutSocialLinksInput, UserUncheckedCreateWithoutSocialLinksInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutSocialLiknsInput = {
+  export type UserUpdateToOneWithWhereWithoutSocialLinksInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSocialLiknsInput, UserUncheckedUpdateWithoutSocialLiknsInput>
+    data: XOR<UserUpdateWithoutSocialLinksInput, UserUncheckedUpdateWithoutSocialLinksInput>
   }
 
-  export type UserUpdateWithoutSocialLiknsInput = {
+  export type UserUpdateWithoutSocialLinksInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -6070,7 +6070,7 @@ export namespace Prisma {
     token?: TokenUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutSocialLiknsInput = {
+  export type UserUncheckedUpdateWithoutSocialLinksInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -6105,7 +6105,7 @@ export namespace Prisma {
     deactivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    socialLikns?: SocialLinkCreateNestedManyWithoutUserInput
+    socialLinks?: SocialLinkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTokenInput = {
@@ -6124,7 +6124,7 @@ export namespace Prisma {
     deactivatedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    socialLikns?: SocialLinkUncheckedCreateNestedManyWithoutUserInput
+    socialLinks?: SocialLinkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTokenInput = {
@@ -6159,7 +6159,7 @@ export namespace Prisma {
     deactivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    socialLikns?: SocialLinkUpdateManyWithoutUserNestedInput
+    socialLinks?: SocialLinkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTokenInput = {
@@ -6178,7 +6178,7 @@ export namespace Prisma {
     deactivatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    socialLikns?: SocialLinkUncheckedUpdateManyWithoutUserNestedInput
+    socialLinks?: SocialLinkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TokenCreateManyUserInput = {
